@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  webserver: # Apache webserver service
+    container_name: PHP-webServer
+    build:
+      context: . # Dockerfile path
+      dockerfile: Dockerfile
+    volumes: # Mount the local directory to /var/www/html in the container
+      - ./app:/var/www/html       
+    ports: # Map port on the host to port on the container 
+      - 80:80
+    # depends_on:
+    #   - postgres
+
+  # postgres:
+  #   image: postgres:16.0
+  #   environment:
+  #     POSTGRES_DB: belvedere
+  #     POSTGRES_USER: anonymous
+  #     POSTGRES_PASSWORD: belvedere_guest
+  #   ports:
+  #     - "25060:25060"
