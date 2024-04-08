@@ -13,3 +13,6 @@ WORKDIR /var/www/html
 
 # Copy the PHP code file in /app into the container at /var/www/html
 COPY ./app/ .
+
+# Download large point clouds from the internet
+RUN  https://belvederebucket.fra1.cdn.digitaloceanspaces.com/potree/pointclouds/2009_all/octree.bin /var/www/html/potree/assets/pointclouds/2009_all/octree.bin
