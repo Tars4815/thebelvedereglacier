@@ -40,7 +40,7 @@ viewer.setDescription("");
 
 viewer.loadGUI(() => {
     viewer.setLanguage('en');
-    viewer.toggleSidebar();
+    //viewer.toggleSidebar();
     $("#menu_appearance").next().show();
     $("#menu_tools").next().show();
     let section = $(`<h3 id="menu_meta" class="accordion-header ui-widget"><span>Credits</span></h3><div class="accordion-content ui-widget pv-menu-list"></div>`);
