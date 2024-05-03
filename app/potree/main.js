@@ -27,7 +27,7 @@ document
                 const position = [parseFloat(point.east), parseFloat(point.north), parseFloat(point.h)];
                 createAnnotation(
                     point.id, // id
-                    viewer.scene, // scene
+                    potreeViewer.scene, // scene
                     point.label, // titleText
                     position, // position (floats)
                     [], // cameraPosition (empty)

@@ -12,6 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="./libs/openlayers3/ol.css">
 	<link rel="stylesheet" type="text/css" href="./libs/spectrum/spectrum.css">
 	<link rel="stylesheet" type="text/css" href="./libs/jstree/themes/mixed/style.css">
+	<link rel="stylesheet" type="text/css" href="./libs/Cesium/Widgets/CesiumWidget/CesiumWidget.css">
 	<!-- Custom styles for this template -->
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
@@ -29,14 +30,7 @@
 	<script src="./libs/jstree/jstree.js"></script>
 	<script src="./libs/potree/potree.js"></script>
 	<script src="./libs/plasio/js/laslaz.js"></script>
-	<!-- INCLUDE ADDITIONAL DEPENDENCIES HERE -->
-	<!-- Custom styles for this template -->
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<!-- Defining header with title -->
-	<!-- <div id="header_panel">
-		<div id="header_title">
-		</div>
-	</div> -->
+	<script src="./libs/Cesium/Cesium.js"></script>
 	<!-- Defining the dropdown menu for selecting Survey years-->
 	<div class="surveys-menu-container">
 		<select id="yearDropdown">
@@ -47,6 +41,8 @@
 	<!--Loading settings for Potree viewer-->
 	<div class="potree_container" style="position: relative; height:100%; width: 100%;">
 		<div id="potree_render_area">
+			<div id="cesiumContainer" style="position: absolute; width: 100%; height: 100%; background-color:black">
+			</div>
 		</div>
 		<div id="potree_sidebar_container" style="width: 50%; height: 100%;"> </div>
 		<!--Hotspots Dropup-->
@@ -81,13 +77,11 @@
 		</div>
 	</div>
 	<!-- Import POINTCLOUD-->
-	<script src="pointcloud.js"></script>
+	<script type="module" src="viewer.js"></script>
 	<!-- Import ANNOTATIONS-->
 	<script src="annotations.js"></script>
-	<!--Import ORIENTED IMAGES-->
-	<!-- <script src="src/orientedcameras.js"></script> -->
 	<!-- Import main js-->
-	<script src="main.js"></script>
+	<script type="module" src="main.js"></script>
 	<script>
 		//Function to change Touch to HotspotName
 		function changeHotspotName(newName) {
@@ -114,7 +108,7 @@
 
 			// Hide all point clouds except the selected year
 			years.forEach(y => {
-				viewer.scene.pointclouds.find(element => element.name === y).visible = (y === year);
+				potreeViewer.scene.pointclouds.find(element => element.name === y).visible = (y === year);
 			});
 
 			// Update the hotspot name
