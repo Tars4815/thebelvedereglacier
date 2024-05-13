@@ -31,6 +31,7 @@
 	<script src="./libs/potree/potree.js"></script>
 	<script src="./libs/plasio/js/laslaz.js"></script>
 	<script src="./libs/Cesium/Cesium.js"></script>
+	<script src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 	<!-- Defining the dropdown menu for selecting Survey years-->
 	<div class="surveys-menu-container">
 		<select id="yearDropdown">
@@ -38,6 +39,7 @@
 		</select>
 		<button id="loadAnnotationsBtn">Load Annotations</button>
 	</div>
+	<div id="gcp-chart"><div id="chart-container"></div></div>
 	<!--Loading settings for Potree viewer-->
 	<div class="potree_container" style="position: relative; height:100%; width: 100%;">
 		<div id="potree_render_area">

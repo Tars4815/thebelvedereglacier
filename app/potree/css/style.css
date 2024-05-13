@@ -6,252 +6,269 @@
 }*/
 
 .controls {
-    display: flex;
-    /*none to hide*/
-    /*min-width: 0;*/
-    padding: 20px;
-    pointer-events: none;
-    position: absolute;
-    right: 700px;
-    bottom: 10px;
-    z-index: 2;
-    height: 50px;
-    /*width: 40% my change*/
-    /*inherited*/
-    font-family: 'Verdana', sans-serif;
-    font-size: 20px;
-    text-align: center;
-    font-weight: 900;
-    /*temp*/
-    transition-property: opacity;
-    transition-duration: 250ms;
-    transition-timing-function: ease-in-out;
-    transition-delay: initial;
-    width: 300px;
-    bottom: 50px;
-    /*changed*/
+  display: flex;
+  /*none to hide*/
+  /*min-width: 0;*/
+  padding: 20px;
+  pointer-events: none;
+  position: absolute;
+  right: 700px;
+  bottom: 10px;
+  z-index: 2;
+  height: 50px;
+  /*width: 40% my change*/
+  /*inherited*/
+  font-family: "Verdana", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 900;
+  /*temp*/
+  transition-property: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+  transition-delay: initial;
+  width: 300px;
+  bottom: 50px;
+  /*changed*/
 }
 
 .controls .hotspot-controls {
-    display: flex;
-    min-width: 440px;
-    position: relative;
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 0;
-    pointer-events: all;
-    height: 60px;
-    text-align: center;
-    font-size: 20px;
-    /*13px*/
-    color: #ffffff;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 25px;
-    border: solid;
-    border-color: #ffffff;
+  display: flex;
+  min-width: 440px;
+  position: relative;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+  pointer-events: all;
+  height: 60px;
+  text-align: center;
+  font-size: 20px;
+  /*13px*/
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 25px;
+  border: solid;
+  border-color: #ffffff;
 }
 
 .controls .hotspot-controls [data-action="prev-annotation"] {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-left: 20px;
-    /*changed*/
-    padding-right: 20px;
-    /*changed*/
-    line-height: 30px;
-    cursor: pointer;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  /*changed*/
+  padding-right: 20px;
+  /*changed*/
+  line-height: 30px;
+  cursor: pointer;
 }
 
 .controls .hotspot-controls .hotspot-name {
-    padding: 0 10px;
-    overflow: hidden;
-    line-height: 55px;
-    /*modifies the height of the text*/
-    text-align: center;
-    text-overflow: ellipsis;
-    text-shadow: 0 0 10px #000000;
-    white-space: nowrap;
-    cursor: pointer;
-    -ms-flex: 1;
-    flex: 1;
+  padding: 0 10px;
+  overflow: hidden;
+  line-height: 55px;
+  /*modifies the height of the text*/
+  text-align: center;
+  text-overflow: ellipsis;
+  text-shadow: 0 0 10px #000000;
+  white-space: nowrap;
+  cursor: pointer;
+  -ms-flex: 1;
+  flex: 1;
 }
 
 .controls .hotspot-controls [data-action="next-annotation"] {
-    padding-top: 0px;
-    padding-right: 20px;
-    /*changed*/
-    padding-bottom: 0px;
-    padding-left: 20px;
-    /*changed*/
-    line-height: 30px;
-    cursor: pointer;
+  padding-top: 0px;
+  padding-right: 20px;
+  /*changed*/
+  padding-bottom: 0px;
+  padding-left: 20px;
+  /*changed*/
+  line-height: 30px;
+  cursor: pointer;
 }
 
 .controls .hotspot-controls .list {
-    position: absolute;
-    right: 7%;
-    bottom: 70px;
-    /*change the proximity of bar and list*/
-    display: none;
-    min-height: 160px;
-    padding: 1px;
-    color: #ffffff;
-    background: rgba(0, 0, 0, 0.75);
-    border-radius: 10px;
-    text-align: center;
-    transition-property: opacity;
-    transition-duration: 250ms;
-    transition-timing-function: ease-in-out;
-    transition-delay: initial;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    min-width: 90%;
+  position: absolute;
+  right: 7%;
+  bottom: 70px;
+  /*change the proximity of bar and list*/
+  display: none;
+  min-height: 160px;
+  padding: 1px;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  text-align: center;
+  transition-property: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+  transition-delay: initial;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  min-width: 90%;
 }
 
 #prevDiv,
 #nextDiv {
-    height: 20px;
-    width: 20px;
-    position: center;
-    position: absolute;
+  height: 20px;
+  width: 20px;
+  position: center;
+  position: absolute;
 }
 
 #prevIcon {
-    bottom: -25px;
-    position: absolute;
-    left: -5px;
+  bottom: -25px;
+  position: absolute;
+  left: -5px;
 }
 
 #nextIcon {
-    bottom: -25px;
-    position: absolute;
-    right: 12px;
+  bottom: -25px;
+  position: absolute;
+  right: 12px;
 }
 
 .js-scrollable {
-    margin-top: 0px;
-    margin-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .controls .hotspot-controls .list .annotations-visibility,
 .controls .hotspot-controls .list .annotations-autopilot {
-    display: none;
-    /*set to none if hidden on barge*/
-    height: 28px;
-    padding-top: 0px;
-    padding-right: 5px;
-    padding-bottom: 0px;
-    padding-left: 5px;
-    overflow: hidden;
-    text-align: center;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    border-radius: 2px;
-    align-items: center;
-    justify-content: flex-start;
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: auto;
+  display: none;
+  /*set to none if hidden on barge*/
+  height: 28px;
+  padding-top: 0px;
+  padding-right: 5px;
+  padding-bottom: 0px;
+  padding-left: 5px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-radius: 2px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
 }
 
 .controls .hotspot-controls .list .annotations-visibility:hover,
 .controls .hotspot-controls .list .annotations-autopilot:hover {
-    background-color: #333333;
+  background-color: #333333;
 }
 
 .controls .hotspot-controls .list ul {
-    overflow: auto;
-    /*border-top-width: 1px;*/
-    /*border-top-style: solid; to hide line on top */
-    border-top-color: rgb(86, 86, 86);
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0%;
-    text-align: center;
-    padding: 10px;
+  overflow: auto;
+  /*border-top-width: 1px;*/
+  /*border-top-style: solid; to hide line on top */
+  border-top-color: rgb(86, 86, 86);
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+  text-align: center;
+  padding: 10px;
 }
 
 .controls .hotspot-controls .list li a {
-    display: flex;
-    width: 100%;
-    height: 38px;
-    box-sizing: border-box;
-    padding: 0 5px;
-    overflow: hidden;
-    color: #ffffff;
-    /*color: #cccccc;*/
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    border-radius: 2px;
-    text-align: center;
-    align-items: center;
-    justify-content: flex-start;
-    cursor: pointer;
+  display: flex;
+  width: 100%;
+  height: 38px;
+  box-sizing: border-box;
+  padding: 0 5px;
+  overflow: hidden;
+  color: #ffffff;
+  /*color: #cccccc;*/
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-radius: 2px;
+  text-align: center;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
 }
 
 .controls .hotspot-controls .list li a:hover {
-    background-color: #333333;
+  background-color: #333333;
 }
-
 
 .controls .hotspot-controls .list li .index {
-    margin-right: 8px;
+  margin-right: 8px;
 }
-
 
 /*visibility*/
 .controls .hotspot-controls .list .annotations-visibility.\--hide:before {
-    content: "\F06E";
+  content: "\F06E";
 }
 
 .controls .hotspot-controls .list .annotations-visibility:before {
-    content: "\F070";
+  content: "\F070";
 }
 
 .controls .hotspot-controls .list .annotations-visibility:before,
 .controls .hotspot-controls .list .annotations-autopilot:before {
-    margin-right: 8px;
-    font-family: "FontAwesome";
+  margin-right: 8px;
+  font-family: "FontAwesome";
 }
 
 .controls .hotspot-controls .list .annotations-visibility.\--hide:after {
-    content: "Show annotations";
+  content: "Show annotations";
 }
 
 .controls .hotspot-controls .list .annotations-visibility:after {
-    content: "Hide annotations";
+  content: "Hide annotations";
 }
-
 
 /*autopilot*/
 .controls .hotspot-controls .list .annotations-autopilot.\--stopped:before {
-    content: "\F04D";
+  content: "\F04D";
 }
 
 .controls .hotspot-controls .list .annotations-autopilot:before {
-    content: "\F04B";
+  content: "\F04B";
 }
 
 .controls .hotspot-controls .list .annotations-visibility:before,
 .controls .hotspot-controls .list .annotations-autopilot:before {
-    margin-right: 8px;
-    font-family: "FontAwesome";
+  margin-right: 8px;
+  font-family: "FontAwesome";
 }
 
 .controls .hotspot-controls .list .annotations-autopilot.\--stopped:after {
-    content: "Stop autopilot";
+  content: "Stop autopilot";
 }
 
 .controls .hotspot-controls .list .annotations-autopilot:after {
-    content: "Start autopilot";
+  content: "Start autopilot";
 }
 
 /* Surveys list style*/
 .surveys-menu-container {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 100;
-    font-family: 'Open Sans';
-    font-size: 0.5em;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  font-family: "Open Sans";
+  font-size: 0.5em;
+}
+
+/* Ground Control Point chart style*/
+#gcp-chart {
+  position: fixed;
+  visibility: hidden;
+  bottom: 10px;
+  right: 10px;
+  z-index: 100;
+  font-family: "Open Sans";
+  font-size: 1em;
+  background-color: black;
+  opacity: 0.8;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 10px;
+  border-color: #ffffff;
+  border: solid;
+  width: 40%;
+  height: 40%;
 }

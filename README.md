@@ -18,4 +18,11 @@ The data and products of the Belvedere monitoring project that you can explore w
 
 Gaspari, F., Ioli, F., Barbieri, F., Fascia, R., Pinto, L., and Rossi, L.: From theory to real-world geomatics applications: glacier monitoring fieldworks through an innovative teaching program, *, Vienna, Austria, 14–19 Apr 2024, EGU24-16189, https://doi.org/10.5194/egusphere-egu24-16189, 2024
 
+## TO DO
+
+### Potree Viewer
+
+- [ ] Echarts.js integration: showing measurements time series plotted on a graph for each annotation.
+- [ ] Integration of oti
+
 

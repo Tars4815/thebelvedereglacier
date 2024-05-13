@@ -21,7 +21,14 @@ function createAnnotation(
 ) {
   // Create title and description elements
   let titleElement = $(`<span>${titleText}</span>`);
-  let descriptionElement = $('<div></div>').html(descriptionText);
+  let graphPanel = document.getElementById("gcp-chart");
+  titleElement.click((event) => {
+    console.log("Titolo: " + titleText);
+    graphPanel.style.visibility = "visible";
+    // Fetch displacement data for the annotation's point label and populate the graph
+    fetchVelocitytData(titleText, graphPanel);
+  });
+  let descriptionElement = $("<div></div>").html(descriptionText);
   // Create Potree.Annotation instance
   let annotation = new Potree.Annotation({
     position: position,
@@ -36,38 +43,94 @@ function createAnnotation(
   annotation.visible = true;
   // Add the annotation to the scene
   scene.annotations.add(annotation);
-  // Fetch displacement data for the annotation's point label and populate the graph
-  fetchDisplacementData(titleText, descriptionElement);
   // Override toString method for the title element
   titleElement.toString = () => titleText;
 }
 
+// Function to generate the ECharts graph
+function generateEChartsGraph(data, panelElement, pointLabel) {
+  // Process data for the graph
+  const xAxisData = data.map((entry) => entry.survey_year);
+  const seriesData = data.map((entry) => entry.v);
+  console.log(seriesData);
+  console.log(xAxisData);
+
+  // Create a container div for the ECharts graph
+  const chartContainer = document.createElement("div");
+  chartContainer.style.width = "100%";
+  chartContainer.style.height = "100%";
+
+  // Append the chart container to the panel element
+  panelElement.appendChild(chartContainer);
+
+  // Initialize ECharts instance
+  const chart = echarts.init(chartContainer);
+
+  // ECharts options
+  const option = {
+    textStyle: {
+      color: "#fff",
+    },
+    title: {
+      text: "Velocity over time for point " + pointLabel,
+      textStyle: {
+        color: "#fff",
+      },
+      textAlign: "auto",
+      padding: 10,
+      left: "center",
+    },
+    xAxis: {
+      type: "category",
+      data: xAxisData,
+    },
+    yAxis: {
+      type: "value",
+      name: "Velocity (m/g)",
+      yAxis: seriesData,
+    },
+    dataView: { readOnly: false },
+    tooltip: {
+      trigger: "axis",
+    },
+    toolbox: {
+      feature: {
+        saveAsImage: {},
+        showTitle: true,
+        dataZoom: {
+          yAxisIndex: "none",
+        },
+        magicType: { type: ["line", "bar"] },
+        restore: {},
+      },
+    },
+    series: [
+      {
+        data: seriesData,
+        type: "line",
+      },
+    ],
+  };
+
+  // Set ECharts options and render the chart
+  chart.setOption(option);
+}
+
 // Function to fetch displacement data for the clicked annotation's point label
-function fetchDisplacementData(pointLabel, descriptionElement) {
-  fetch('db/fetch_displacement_data.php?pointLabel=' + pointLabel)
-    .then(response => response.json())
-    .then(data => {
+function fetchVelocitytData(pointLabel, panelElement) {
+  fetch(`db/fetch_velocity_data.php?pointLabel=${pointLabel}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(pointLabel, data);
       // Check if data is available
       if (data && data.length > 0) {
-        // Prepare data for the graph
-        const surveyDates = data.map(entry => entry.survey_date);
-        const displacements = data.map(entry => parseFloat(entry.d_mod));
-
-        // Create a plotly graph
-        const graph = document.createElement('div');
-        Plotly.newPlot(graph, [{
-          x: surveyDates,
-          y: displacements,
-          type: 'scatter',
-          mode: 'lines+markers',
-          marker: { color: 'blue' },
-        }]);
-
-        // Append the graph to the annotation's description
-        descriptionElement.append(graph);
+        // Generate the ECharts graph with the fetched data
+        generateEChartsGraph(data, panelElement, pointLabel);
       } else {
-        console.error('No displacement data found for the point label:', pointLabel);
+        console.warn("No velocity data found for the point label:", pointLabel);
       }
     })
-    .catch(error => console.error('Error fetching displacement data:', error));
+    .catch((error) =>
+      console.error("Error fetching displacement data:", error)
+    );
 }
