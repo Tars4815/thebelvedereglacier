@@ -1,12 +1,21 @@
 <?php
 
-include '../../.credentials/config.php';
-
 try {
-    $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;sslmode=$sslmode";
-    $pdo = new PDO($dsn, $username, $password);
+  // Access database connection details from environment variables
+  $DBHOST = getenv('DBHOST');
+  $DBPORT = getenv('DBPORT');
+  $DBNAME = getenv('DBNAME');
+  $DBUSERNAME = getenv('DBUSERNAME');
+  $DBPASSWORD = getenv('DBPASSWORD');
+  $DBSSLMODE = getenv('DBSSLMODE');
+
+  // Build the PDO connection string
+  $dsn = "pgsql:host=$DBHOST;port=$DBPORT;dbname=$DBNAME;sslmode=$DBSSLMODE";
+
+  // Create the PDO connection
+  $pdo = new PDO($dsn, $DBUSERNAME, $DBPASSWORD);
 } catch (PDOException $e) {
-    die("Error: Could not connect to the database: " . $e->getMessage());
+  die("Error: Could not connect to the database: " . $e->getMessage());
 }
 
 // Check if the 'pointLabel' parameter is set in the URL
