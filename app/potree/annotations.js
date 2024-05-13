@@ -57,6 +57,7 @@ function generateEChartsGraph(data, panelElement, pointLabel) {
 
   // Create a container div for the ECharts graph
   const chartContainer = document.createElement("div");
+  chartContainer.id = "movement-chart";
   chartContainer.style.width = "100%";
   chartContainer.style.height = "100%";
 
@@ -119,18 +120,28 @@ function generateEChartsGraph(data, panelElement, pointLabel) {
 // Function to fetch displacement data for the clicked annotation's point label
 function fetchVelocitytData(pointLabel, panelElement) {
   fetch(`db/fetch_velocity_data.php?pointLabel=${pointLabel}`)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(pointLabel, data);
-      // Check if data is available
-      if (data && data.length > 0) {
-        // Generate the ECharts graph with the fetched data
-        generateEChartsGraph(data, panelElement, pointLabel);
-      } else {
-        console.warn("No velocity data found for the point label:", pointLabel);
-      }
-    })
-    .catch((error) =>
-      console.error("Error fetching displacement data:", error)
-    );
+      .then((response) => response.json())
+      .then((data) => {
+          console.log(pointLabel, data);
+          // Check if data is available
+          if (data && data.length > 0) {
+              // Remove existing chart if it exists
+              const existingChart = panelElement.querySelector('#movement-chart');
+              if (existingChart) {
+                  existingChart.remove();
+              }
+              // Clean the innerHTML of the panel element
+              panelElement.innerHTML = '';
+              // Generate the ECharts graph with the fetched data
+              generateEChartsGraph(data, panelElement, pointLabel);
+          } else {
+              console.warn("No velocity data found for the point label:", pointLabel);
+              // Optionally, display a message indicating no data found
+              panelElement.innerHTML = "No velocity data found for the point label: " + pointLabel;
+          }
+      })
+      .catch((error) =>
+          console.error("Error fetching displacement data:", error)
+      );
 }
+
