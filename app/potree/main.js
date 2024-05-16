@@ -29,6 +29,7 @@ document
               parseFloat(point.north),
               parseFloat(point.h),
             ];
+            var descriptionText = "<b>Coordinates:</b> " + position;
             createAnnotation(
               point.id, // id
               potreeViewer.scene, // scene
@@ -36,7 +37,7 @@ document
               position, // position (floats)
               [], // cameraPosition (empty)
               [], // cameraTarget (empty)
-              "" // descriptionText (empty)
+              descriptionText // descriptionText
             );
           });
         })
@@ -52,5 +53,5 @@ document
     //Remove all GNSS annotations loaded in the scene
     potreeViewer.scene.annotations.removeAllChildren();
     //Hide graph panel
-    document.querySelector('#gcp-chart').style.visibility = 'hidden';
+    document.querySelector("#gcp-chart").style.visibility = "hidden";
   });
