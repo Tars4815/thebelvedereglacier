@@ -11,7 +11,7 @@ try {
 // Fetch point data from the database based on the selected year
 $year = isset($_GET['year']) ? $_GET['year'] : date('Y'); // Default to current year if not specified
 // Construct the SQL query using prepared statements to prevent SQL injection
-$query = "SELECT * FROM public.points_measurements WHERE survey_year = ?";
+$query = "SELECT * FROM public.points_measurements WHERE is_fixed = FALSE AND survey_year = ?";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$year]);
 $points = $stmt->fetchAll(PDO::FETCH_ASSOC);

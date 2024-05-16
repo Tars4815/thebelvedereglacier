@@ -28,14 +28,36 @@ function createAnnotation(
     // Fetch displacement data for the annotation's point label and populate the graph
     fetchVelocitytData(titleText, graphPanel);
   });
-  let descriptionElement = $("<div></div>").html(descriptionText);
+  // Fetch least and most recent survey dates
+  fetch(`db/fetch_velocity_data.php?pointLabel=${titleText}`)
+    .then((response) => response.json())
+    .then((data) => {
+      // Check if data is available
+      if (data && data.length > 0) {
+        // Find the least and most recent survey dates
+        const minSurveyDate = new Date(
+          Math.min(...data.map((entry) => new Date(entry.survey_date_fin)))
+        );
+        const maxSurveyDate = new Date(
+          Math.max(...data.map((entry) => new Date(entry.survey_date_fin)))
+        );
+
+        // Append the dates to the description text
+        descriptionText += `\n\n<br><b>Least recent survey date:</b> ${minSurveyDate.toLocaleDateString()}\n<br><b>Most recent survey date:</b> ${maxSurveyDate.toLocaleDateString()}`;
+
+        // Update the annotation description
+        annotation.description = descriptionText;
+      }
+    })
+    .catch((error) => console.error("Error fetching survey dates:", error));
+  // let descriptionElement = $("<div></div>").html(descriptionText);
   // Create Potree.Annotation instance
   let annotation = new Potree.Annotation({
     position: position,
     title: titleElement,
     cameraPosition: cameraPosition,
     cameraTarget: cameraTarget,
-    description: descriptionElement,
+    description: descriptionText,
   });
   // Assigning unique ID from database
   annotation.customId = id;
@@ -51,12 +73,13 @@ function createAnnotation(
 function generateEChartsGraph(data, panelElement, pointLabel) {
   // Process data for the graph
   const xAxisData = data.map((entry) => entry.survey_year);
-  const seriesData = data.map((entry) => entry.v);
+  const seriesData = data.map((entry) => parseFloat(entry.v));
   console.log(seriesData);
   console.log(xAxisData);
 
   // Create a container div for the ECharts graph
   const chartContainer = document.createElement("div");
+  chartContainer.id = "movement-chart";
   chartContainer.style.width = "100%";
   chartContainer.style.height = "100%";
 
@@ -86,12 +109,13 @@ function generateEChartsGraph(data, panelElement, pointLabel) {
     },
     yAxis: {
       type: "value",
-      name: "Velocity (m/g)",
+      name: "Velocity (m/d)",
       yAxis: seriesData,
     },
     dataView: { readOnly: false },
     tooltip: {
       trigger: "axis",
+      valueFormatter: (value) => parseFloat(value).toFixed(3) + " m/d",
     },
     toolbox: {
       feature: {
@@ -124,10 +148,20 @@ function fetchVelocitytData(pointLabel, panelElement) {
       console.log(pointLabel, data);
       // Check if data is available
       if (data && data.length > 0) {
+        // Remove existing chart if it exists
+        const existingChart = panelElement.querySelector("#movement-chart");
+        if (existingChart) {
+          existingChart.remove();
+        }
+        // Clean the innerHTML of the panel element
+        panelElement.innerHTML = "";
         // Generate the ECharts graph with the fetched data
         generateEChartsGraph(data, panelElement, pointLabel);
       } else {
         console.warn("No velocity data found for the point label:", pointLabel);
+        // Optionally, display a message indicating no data found
+        panelElement.innerHTML =
+          "No velocity data found for the point label: " + pointLabel;
       }
     })
     .catch((error) =>

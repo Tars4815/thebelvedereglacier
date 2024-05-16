@@ -35,11 +35,12 @@
 	<!-- Defining the dropdown menu for selecting Survey years-->
 	<div class="surveys-menu-container">
 		<select id="yearDropdown">
-			<option value="">Select Year</option>
+			<option value="">Select Survey Year</option>
 		</select>
-		<button id="loadAnnotationsBtn">Load Annotations</button>
+		<button id="loadAnnotationsBtn">Load GNSS Measurements</button>
+		<button id="removeAnnotationsBtn">Remove</button>
 	</div>
-	<div id="gcp-chart"><div id="chart-container"></div></div>
+	<div id="gcp-chart"><div id="chart-container"></div><button id="close-btn">X</button></div>
 	<!--Loading settings for Potree viewer-->
 	<div class="potree_container" style="position: relative; height:100%; width: 100%;">
 		<div id="potree_render_area">
