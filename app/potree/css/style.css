@@ -257,7 +257,7 @@
 #gcp-chart {
   position: fixed;
   visibility: hidden;
-  bottom: 10px;
+  top: 40px;
   right: 10px;
   z-index: 100;
   font-family: "Open Sans";
@@ -269,6 +269,21 @@
   border-radius: 10px;
   border-color: #ffffff;
   border: solid;
-  width: 40%;
-  height: 40%;
+  width: 30%;
+  height: 30%;
+}
+
+/* Close button style */
+#close-btn {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 100;
+  cursor: pointer;
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 1.2em;
+  padding: 0;
+  outline: none;
 }

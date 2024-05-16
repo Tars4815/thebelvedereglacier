@@ -51,7 +51,7 @@ function createAnnotation(
 function generateEChartsGraph(data, panelElement, pointLabel) {
   // Process data for the graph
   const xAxisData = data.map((entry) => entry.survey_year);
-  const seriesData = data.map((entry) => entry.v);
+  const seriesData = data.map((entry) => parseFloat(entry.v));
   console.log(seriesData);
   console.log(xAxisData);
 
@@ -87,12 +87,13 @@ function generateEChartsGraph(data, panelElement, pointLabel) {
     },
     yAxis: {
       type: "value",
-      name: "Velocity (m/g)",
+      name: "Velocity (m/d)",
       yAxis: seriesData,
     },
     dataView: { readOnly: false },
     tooltip: {
       trigger: "axis",
+      valueFormatter: (value) => parseFloat(value).toFixed(3) + ' m/d',
     },
     toolbox: {
       feature: {

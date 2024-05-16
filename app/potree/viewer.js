@@ -48,8 +48,7 @@ potreeViewer.setBackground(null);
 potreeViewer.useHQ = true;
 
 potreeViewer.setDescription(`
-		Potree using <a href="https://cesiumjs.org/" target="_blank">Cesium</a> to display an 
-		<a href="https://www.openstreetmap.org" target="_blank">OpenStreetMap</a> map below.<br>`);
+		Explore the glacier pointclouds over time, load the Ground Control Points annotations and check out the velocity trends by clicking on the target of interest. Best performances on Google Chrome`);
 
 potreeViewer.loadGUI(() => {
   potreeViewer.setLanguage("en");
