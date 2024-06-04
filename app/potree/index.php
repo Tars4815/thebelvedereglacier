@@ -78,8 +78,9 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<script type="module">
+		
 		// List of years for point clouds
 		const years = [
 			"1977", "1991", "2001", "2009", "2015",
