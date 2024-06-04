@@ -101,23 +101,30 @@
 				document.getElementById('lists').style.display = 'none'; // Hide the list after selecting a year
 			});
 		});
+		
+		// Function to get a point cloud object by its name
+		function get_pointcloud_by_name(name) {
+			return potreeViewer.scene.pointclouds.find(element => element.name === name);
+		}
+
+		// Function to handle visibility of point clouds based on the selected year
+		function handlePointCloudVisibility(year) {
+			// Hide all point clouds except the selected year
+			years.forEach(y => {
+				const pointCloud = get_pointcloud_by_name(y);
+				if (pointCloud) {
+					// Cast to string for comparison
+					pointCloud.visible = (y.toString() === year.toString());
+				} else {
+					console.log(`Point cloud for year ${y} not found`);
+				}
+			});
+		}
 
         // Function to change Touch to HotspotName
         function changeHotspotName(newName) {
             document.getElementById('hotspotName').innerHTML = newName;
         }
-
-        // Function to handle visibility of point clouds based on the selected year
-		function handlePointCloudVisibility(year) {		
-			// Hide all point clouds except the selected year
-			years.forEach(y => {
-				const pointCloud = potreeViewer.scene.pointclouds.find(element => element.name === y);
-				if (pointCloud) {
-					// Cast to string for comparison
-        		    pointCloud.visible = (y.toString() === year.toString()); 
-					}
-			});
-		}
 
 		$(".link a").click(function () {
 			const year = $(this).data('hotspot-target');
@@ -142,6 +149,7 @@
                 currentIndex = (currentIndex - 1 + years.length) % years.length;
             }
             handlePointCloudVisibility(years[currentIndex]);
+			changeHotspotName(years[currentIndex]);			
         }
 
         $("#prev").click(function () {
