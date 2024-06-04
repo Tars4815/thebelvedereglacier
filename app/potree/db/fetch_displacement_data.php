@@ -24,7 +24,7 @@ if (isset($_GET['pointLabel'])) {
     $pointLabel = $_GET['pointLabel'];
 
     // Construct the SQL query using prepared statements to prevent SQL injection
-    $query = "SELECT survey_year, survey_date_fin, v FROM public.points_movement_filtered WHERE label = ? ORDER BY survey_year";
+    $query = "SELECT survey_date, d_mod FROM public.measurements_calculation WHERE point_label = 'D01''";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$pointLabel]);
     $displacementData = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -37,7 +37,7 @@ if (isset($_GET['pointLabel'])) {
     } else {
         // If no displacement data found for the given point label, return an empty array
         header('Content-Type: application/json');
-        echo json_encode(array("message" => "No velocity data found for the given point label."));
+        echo json_encode(array("message" => "No displacement data found for the given point label."));
     }
 } else {
     // If 'pointLabel' parameter is not set, return an error message
@@ -45,5 +45,3 @@ if (isset($_GET['pointLabel'])) {
     echo json_encode(array("message" => "Error: 'pointLabel' parameter is missing."));
 }
 ?>
-
-
