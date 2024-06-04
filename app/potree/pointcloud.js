@@ -28,7 +28,6 @@ const pointCloudURLs = [
     { url: "./assets/pointclouds/2021/metadata.json", name: "2021" },
     { url: "./assets/pointclouds/2022/metadata.json", name: "2022" },
     { url: "./assets/pointclouds/2023/metadata.json", name: "2023" },
-    { url: "./assets/pointclouds/2009_all/metadata.json", name: "Background", visible: true }
 ];
 
 // Load Potree viewer and define appearance settings
@@ -61,9 +60,12 @@ viewer.loadGUI(() => {
     section.insertBefore($('#menu_appearance'));
 });
 
-// Define scene for the bridge
+// Define scene
 let scene = new Potree.Scene();
 viewer.setScene(scene);
+
+// Load basemap pointcloud
+loadPointCloud("./assets/pointclouds/2009_all/metadata.json", "Background", true);
 
 // Load all point cloud data
 pointCloudURLs.forEach(({ url, name, visible }) => {
