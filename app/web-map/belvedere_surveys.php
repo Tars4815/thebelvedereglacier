@@ -1,7 +1,5 @@
 <?php
 
-include '../.credentials/config.php';
-
 try {
   // Access database connection details from environment variables
   $DBHOST = getenv('DBHOST');
