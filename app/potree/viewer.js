@@ -1,5 +1,22 @@
 import * as THREE from "./libs/three.js/build/three.module.js";
 
+// Define constants for point cloud URLs
+const pointCloudURLs = [
+  { url: "./assets/pointclouds/1977/metadata.json", name: "1977",},
+  { url: "./assets/pointclouds/1991/metadata.json", name: "1991" },
+  { url: "./assets/pointclouds/2001/metadata.json", name: "2001" },
+  { url: "./assets/pointclouds/2009/metadata.json", name: "2009" },
+  { url: "./assets/pointclouds/2015/metadata.json", name: "2015" },
+  { url: "./assets/pointclouds/2016/metadata.json", name: "2016" },
+  { url: "./assets/pointclouds/2017/metadata.json", name: "2017" },
+  { url: "./assets/pointclouds/2018/metadata.json", name: "2018" },
+  { url: "./assets/pointclouds/2019/metadata.json", name: "2019" },
+  { url: "./assets/pointclouds/2020/metadata.json", name: "2020" },
+  { url: "./assets/pointclouds/2021/metadata.json", name: "2021" },
+  { url: "./assets/pointclouds/2022/metadata.json", name: "2022" },
+  { url: "./assets/pointclouds/2023/metadata.json", name: "2023", visible: true },
+];
+
 window.cesiumViewer = new Cesium.Viewer("cesiumContainer", {
   useDefaultRenderLoop: false,
   animation: false,
@@ -109,40 +126,15 @@ function loadPointCloud(url, name, visible = false) {
   });
 }
 
-// Define constants for point cloud URLs
-const pointCloudURLs = [
-  {
-    url: "./assets/pointclouds/1977/metadata.json",
-    name: "1977",
-    visible: true,
-  },
-  { url: "./assets/pointclouds/1991/metadata.json", name: "1991" },
-  { url: "./assets/pointclouds/2001/metadata.json", name: "2001" },
-  { url: "./assets/pointclouds/2009/metadata.json", name: "2009" },
-  { url: "./assets/pointclouds/2015/metadata.json", name: "2015" },
-  { url: "./assets/pointclouds/2016/metadata.json", name: "2016" },
-  { url: "./assets/pointclouds/2017/metadata.json", name: "2017" },
-  { url: "./assets/pointclouds/2018/metadata.json", name: "2018" },
-  { url: "./assets/pointclouds/2019/metadata.json", name: "2019" },
-  { url: "./assets/pointclouds/2020/metadata.json", name: "2020" },
-  { url: "./assets/pointclouds/2021/metadata.json", name: "2021" },
-  { url: "./assets/pointclouds/2022/metadata.json", name: "2022" },
-  { url: "./assets/pointclouds/2023/metadata.json", name: "2023" },
-  {
-    url: "./assets/pointclouds/background/metadata.json",
-    name: "Background",
-    visible: true,
-  },
-];
+// Load basemap pointcloud
+loadPointCloud("./assets/pointclouds/background/metadata.json", "Background", true);
 
 // Load all point cloud data
 pointCloudURLs.forEach(({ url, name, visible }) => {
-  loadPointCloud(url, name, visible);
-  potreeViewer.scene.view.setView(
-    [418775.227, 5092016.318, 4084.847],
-    [416658.847, 5090327.441, 2838.766]
-  );
+    loadPointCloud(url, name, visible);
+    potreeViewer.scene.view.setView([418775.227, 5092016.318, 4084.847], [416658.847, 5090327.441, 2838.766]);
 });
+
 
 function loop(timestamp) {
   requestAnimationFrame(loop);
@@ -213,11 +205,3 @@ function loop(timestamp) {
 }
 
 requestAnimationFrame(loop);
-
-//OLD
-/*
-// Define scene for the bridge
-let scene = new Potree.Scene();
-viewer.setScene(scene);
-
-*/
