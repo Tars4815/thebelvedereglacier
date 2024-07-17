@@ -6,6 +6,8 @@ services:
     build:
       context: . # Dockerfile path
       dockerfile: Dockerfile
+    volumes:
+      - ./app:/var/www/html # Mount the local directory to /var/www/html in the container      
     ports: # Map port on the host to port on the container 
       - 80:80
     environment:
