@@ -51,7 +51,7 @@
 	<!-- Import POINTCLOUD-->
 	<script type="module" src="viewer.js"></script>
 	<!-- Import main js-->
-	<script type="module" src="../main.js"></script>
+	<script type="module" src="main.js"></script>
 	<!-- Import oriented cameras-->
 	<!--<script type="module" src="orientedcameras.js"></script>-->
 </body>
