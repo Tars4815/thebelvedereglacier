@@ -129,7 +129,7 @@ const pointCloudURLs = [
   { url: "./assets/pointclouds/2022/metadata.json", name: "2022" },
   { url: "./assets/pointclouds/2023/metadata.json", name: "2023" },
   {
-    url: "./assets/pointclouds/2009_all/metadata.json",
+    url: "./assets/pointclouds/background/metadata.json",
     name: "Background",
     visible: true,
   },

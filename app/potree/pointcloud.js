@@ -65,7 +65,7 @@ let scene = new Potree.Scene();
 viewer.setScene(scene);
 
 // Load basemap pointcloud
-loadPointCloud("./assets/pointclouds/2009_all/metadata.json", "Background", true);
+loadPointCloud("./assets/pointclouds/background/metadata.json", "Background", true);
 
 // Load all point cloud data
 pointCloudURLs.forEach(({ url, name, visible }) => {

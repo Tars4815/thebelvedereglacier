@@ -117,7 +117,7 @@ const pointCloudURLs = [
     visible: true,
   },
   {
-    url: "../assets/pointclouds/2009_all/metadata.json",
+    url: "../assets/pointclouds/background/metadata.json",
     name: "background",
     visible: true,
   },
