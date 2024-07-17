@@ -16,4 +16,4 @@ services:
       - DBUSERNAME=anonymous
       - DBPORT=25060
       - DBSSLMODE=require
-      - DBPASSWORD=${DBPASSWORD}
+      - DBPASSWORD=${DBPASS}
