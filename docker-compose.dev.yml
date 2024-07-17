@@ -11,9 +11,9 @@ services:
     ports:
       - 80:80
     environment:
-    - DBHOST=db-belvedere-do-user-15912601-0.c.db.ondigitalocean.com
-    - DBNAME=belvedere
-    - DBUSERNAME=anonymous
-    - DBPORT=25060
-    - DBSSLMODE=require
-    - DBPASSWORD=${DBPASS}
+      - DBHOST=${DBHOST}
+      - DBNAME=${DBNAME}
+      - DBUSERNAME=${DBUSERNAME}
+      - DBPORT=${DBPORT}
+      - DBSSLMODE=${DBSSLMODE}
+      - DBPASSWORD=${DBPASSWORD}
