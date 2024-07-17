@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  webserver:
+    container_name: belvedereapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/var/www/html # Mount the local directory to /var/www/html in the container
+    ports:
+      - 80:80
+    environment:
+      - DBHOST=${DBHOST}
+      - DBNAME=${DBNAME}
+      - DBUSERNAME=${DBUSERNAME}
+      - DBPORT=${DBPORT}
+      - DBSSLMODE=${DBSSLMODE}
+      - DBPASSWORD=${DBPASSWORD}

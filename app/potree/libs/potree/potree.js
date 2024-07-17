@@ -77019,7 +77019,7 @@ ENDSEC
 					continue;
 				}
 
-				const params = {
+				var params = {
 					id: tokens[0],
 					x: Number.parseFloat(tokens[1]),
 					y: Number.parseFloat(tokens[2]),

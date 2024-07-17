@@ -1,3 +1,4 @@
-.vscode/*
-app/potree/assets/pointclouds/2009_all/octree.bin
+.vscode/
 .env
+app/potree/assets/pointclouds/background/octree.bin
+sandbox/

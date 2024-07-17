@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>The Belvedere Glacier | Monitoring project</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="../assets/css/noscript.css" />
+    </noscript>
+</head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <a href="../index.html" class="logo">The Belvedere Glacier Project</a>
+        </header>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul class="links">
+                <li><a href="../index.html">Home</a></li>
+                <li class="active"><a href="monitoring.html">Monitoring project</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="acknowledgements.html">Acknowledgements</a></li>
+            </ul>
+            <ul class="icons">
+                <li><a href="https://x.com/LabMGF" class="icon brands fa-twitter" target="_blank"><span
+                            class="label">Twitter</span></a></li>
+                <li><a href="https://www.linkedin.com/company/labmgf-dica-polimi/" class="icon brands fa-linkedin"
+                        target="_blank"><span class="label">LinkedIn</span></a></li>
+                <li><a href="https://www.instagram.com/labmgf?igsh=aW45b3EyNXFjNWs4" class="icon brands fa-instagram"
+                        target="_blank"><span class="label">Instagram</span></a></li>
+                <li><a href="https://github.com/labmgf-polimi" class="icon brands fa-github" target="_blank"><span
+                            class="label">GitHub</span></a></li>
+            </ul>
+        </nav>
+
+        <!-- Main -->
+        <div id="main">
+
+            <!-- Post -->
+            <section class="post">
+                <header class="major">
+                    <h1>Monitoring project</h1>
+                </header>
+                <p>This project aims at a thorough and accurate <b>4D monitoring</b> of the Belvedere Glacier with
+                    <b>photogrammetric approaches</b>, exploiting different spatial (<b>from centimetric to metric</b>)
+                    and temporal
+                    resolution (<b>from daily to 10-year periods</b>) and with different platforms (<b>UAVs, aerial
+                        photogrammetry, terrestrial time-lapse cameras</b>). <br>
+
+                    <b>Since 2015</b>, an extensive and continuous monitoring activity was carried out with
+                    <b>UAVs-based
+                        photogrammetry</b> and <b>in-situ GNSS measurements</b> (Ioli et al, 2022). Every year,
+                    fixed-wing UAVs and
+                    quadcopters were used to remotely sense the glacier and build high-resolution photogrammetric models
+                    in order to estimate annual variations of ice volume and ice flow velocities. <br>
+
+                    The monitoring activity carried out on the Belvedere Glacier was designed and conducted jointly by
+                    the Department of Civil and Environmental Engineering (<b>DICA</b>) of Politecnico di Milano and the
+                    Department of Environment, Land and Infrastructure Engineering (<b>DIIATI</b>) of Politecnico di
+                    Torino.
+                    The <b>DREAM</b> projects (DRone tEchnnology for wAter resources and hydrologic hazard Monitoring),
+                    involving teachers and students from Alta Scuola Politecnica (<b>ASP</b>) of Politecnico di Torino
+                    and
+                    Milano, contributed to the campaign from 2015 to 2017. <span class="image right"><img src="../images/old-photos.jpg" alt="" /></span><br>
+
+                    Moreover, to reconstruct the <b>long-term evolution</b> of the glacier, from 1977 up to now, we used
+                    <b>historical images</b> acquired for regional mapping purposes. Historic <b>analog</b> images were
+                    <b>digitalized</b>
+                    and processed with a modern photogrammetric approach to derive the glacier 3D morphology in 1977,
+                    1991 and 2001 (De Gaetani et al., 2021). <br>
+                    Currently, <b>two time-lapse cameras</b>, permanently installed at the NW glacier terminus, are
+                    being used
+                    to derive <b>daily 3D glacier movements</b> and changes in the ice structures (such as ice falls and
+                    calving events).
+                </p>
+                <h2>Low-cost stereo-photogrammetry and Deep Learning for 4D monitoring of an alpine glacier</h2>
+                <p><span class="image left"><img src="../images/stereo-cam.jpeg" alt="" /></span>Time-lapse cameras are frequently used to retrieve information on glacial flows. However, only one
+                    camera is often employed, preventing photogrammetric reconstructions. To monitor sub-seasonal
+                    movements of the glacier, we designed a <b>low-cost stereoscopic system</b> composed of <b>two
+                        time-lapse
+                        cameras</b> for monitoring the north-west tongue of the Belvedere Glacier. <br>
+                    The stereoscopic system was realized in collaboration with the students of the <a
+                        href="https://www.asp-poli.it/kuoleva-j%d3%93%d3%93tikk%d3%a7/" target="_blank">Kuoleva
+                        Jäätikkö</a>
+                    project of the Alta Scuola Politecnica (ASP). <br>
+                    Each monitoring station includes a <b>DSLR camera</b>, an <b>Arduino microcontroller</b> for camera
+                    triggering,
+                    and a <b>Raspberry Pi Zero</b> with a SIM card for sending images to a remote server. The
+                    instrumentation
+                    is enclosed in waterproof cases. During summer 2021, the two cameras were installed on each side of
+                    the Belvedere Glacier terminal ice cliff and they are currently taking <b>daily images</b>. <br>
+                    Due to the <b>wide baseline</b> (i.e., ∼260 m), traditional feature-based matching techniques (e.g.,
+                    the
+                    ones implemented in software such as Agisoft Metashape and based on SIFT-like descriptors) fail to
+                    find enough homologous points for estimating the orientation of the cameras. State of-the-art
+                    <b>deep
+                        learning</b> matching methods, such a SuperGlue (Sarlin et al., 2020), outperform traditional
+                    feature
+                    based matching techniques. <span class="image right"><img src="../images/area_of_sudy_shaded.png" alt="" /></span><br>
+                    Thefore, it was necessary to develop an ad-hoc pipeline for multi-temporal stereo reconstruction
+                    with wide camera baselines: <b>ICEpy4D</b>. <br>
+                    ICEpy4D is a multi-purpose Python package for 4D Image-based Continuos monitoring of glaciers’
+                    Evolution with deep learning SfM and low-cost stereo-cameras and it is available at
+                    <a href="https://github.com/franioli/icepy4d"
+                        target="_blank">https://github.com/franioli/icepy4d</a>
+
+                    The results of the daily monitoring of the Belvedere Glacier using this low-cost time-lapse camera
+                    system are published at <a
+                        href="https://link.springer.com/article/10.1007/s41064-023-00272-w">https://link.springer.com/article/10.1007/s41064-023-00272-w</a>
+                </p>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+            <section class="split contact">
+                <section class="alt">
+                    <h3>Contacts</h3>
+                    <p>Building 3A<br />
+                        Politecnico di Milano - Campus Leonardo<br />
+                        Leonardo Da Vinci Square 32, Milan, Italy<br />
+                        <a href="mailto:labmgf-dica@polimi.it">labmgf-dica@polimi.it</a>
+                    </p>
+                </section>
+                <section>
+                    <h3>Social</h3>
+                    <ul class="icons alt">
+                        <li><a href="https://x.com/LabMGF" class="icon brands alt fa-twitter" target="_blank"><span
+                                    class="label">Twitter</span></a></li>
+                        <li><a href="https://www.linkedin.com/company/labmgf-dica-polimi/"
+                                class="icon brands alt fa-linkedin" target="_blank"><span
+                                    class="label">LinkedIn</span></a>
+                        </li>
+                        <li><a href="https://www.instagram.com/labmgf?igsh=aW45b3EyNXFjNWs4"
+                                class="icon brands alt fa-instagram" target="_blank"><span
+                                    class="label">Instagram</span></a>
+                        </li>
+                        <li><a href="https://github.com/labmgf-polimi" class="icon brands alt fa-github"
+                                target="_blank"><span class="label">GitHub</span></a></li>
+                    </ul>
+                </section>
+            </section>
+        </footer>
+
+        <!-- Copyright -->
+        <div id="copyright">
+            <ul>
+                <li>&copy; Untitled</li>
+                <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

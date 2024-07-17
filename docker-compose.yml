@@ -6,14 +6,12 @@ services:
     build:
       context: . # Dockerfile path
       dockerfile: Dockerfile
-    volumes: # Mount the local directory to /var/www/html in the container
-      - ./app:/var/www/html       
     ports: # Map port on the host to port on the container 
       - 80:80
     environment:
-      - DBHOST=db-belvedere-do-user-15912601-0.c.db.ondigitalocean.com
-      - DBNAME=belvedere
-      - DBUSERNAME=anonymous
-      - DBPORT=25060
-      - DBSSLMODE=require
+      - DBHOST=${DBHOST}
+      - DBNAME=${DBNAME}
+      - DBUSERNAME=${DBUSERNAME}
+      - DBPORT=${DBPORT}
+      - DBSSLMODE=${DBSSLMODE}
       - DBPASSWORD=${DBPASSWORD}
