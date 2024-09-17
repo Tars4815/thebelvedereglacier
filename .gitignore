@@ -1,4 +1,3 @@
 .vscode/
 .env
-app/potree/assets/pointclouds/background/octree.bin
 sandbox/
