@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   webserver: # Apache webserver service
     container_name: belvedereapp

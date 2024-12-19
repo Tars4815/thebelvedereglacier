@@ -15,4 +15,4 @@ WORKDIR /var/www/html
 COPY ./app/ .
 
 # Download large point clouds from the internet
-RUN wget http://labmgf.dica.polimi.it/pujob/storage/belvedere/potree/background/octree.bin -O /var/www/html/potree/assets/pointclouds/background/octree.bin 
+# RUN wget http://labmgf.dica.polimi.it/pujob/storage/belvedere/potree/background/octree.bin -O /var/www/html/potree/assets/pointclouds/background/octree.bin 
