@@ -81,6 +81,21 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((images) => {
         console.log(images);
         console.log(images.images[0]);
+        // Condition for checking if the image is present or not
+        // Checking if for the chosen day an image is available. If not it returns undefined
+        // potreeViewer.scene.orientedImages.find(chunk => chunk.name == 'camera_sx').images.find(image => image.id == 'img211024_sx.jpg')
+        /*function isImageDefined(potreeViewer, chunkName, imageId) {
+          const chunk = potreeViewer.scene.orientedImages.find(chunk => chunk.name === chunkName);
+          if (chunk) {
+              return chunk.images.some(image => image.id === imageId);
+          }
+          return false;
+      }
+      
+      // Usage
+      const result = isImageDefined(potreeViewer, 'camera_sx', 'img211024_sx.jpg');
+      console.log(result); // true if the image is defined, false otherwise
+*/      
         images.images[0].id = imageFileName;
         console.log(images.images[0]);
         images.visible = true;

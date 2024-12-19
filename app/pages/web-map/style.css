@@ -9,5 +9,6 @@
 /* Custom styles for the map container */
 #map {
     width: 100%;
-    height: calc(100vh - 50px); /* Adjust height based on screen size, leaving space for header */
+    /* height: calc(100vh - 50px); /* Adjust height based on screen size, leaving space for header */
+    height: 60vh;
 }
