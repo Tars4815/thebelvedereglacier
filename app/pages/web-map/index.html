@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>The Belvedere Glacier | Web Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <noscript>
+        <link rel="stylesheet" href="../../assets/css/noscript.css" />
+    </noscript>
+</head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <a href="../../index.html" class="logo">The Belvedere Glacier Project</a>
+        </header>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul class="links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../monitoring.html">Monitoring project</a></li>
+                <li><a href="../publications.html">Publications</a></li>
+                <li><a href="../acknowledgements.html">Acknowledgements</a></li>
+            </ul>
+            <ul class="icons">
+                <li><a href="https://x.com/LabMGF" class="icon brands fa-twitter" target="_blank"><span
+                            class="label">Twitter</span></a></li>
+                <li><a href="https://www.linkedin.com/company/labmgf-dica-polimi/" class="icon brands fa-linkedin"
+                        target="_blank"><span class="label">LinkedIn</span></a></li>
+                <li><a href="https://www.instagram.com/labmgf?igsh=aW45b3EyNXFjNWs4" class="icon brands fa-instagram"
+                        target="_blank"><span class="label">Instagram</span></a></li>
+                <li><a href="https://github.com/labmgf-polimi" class="icon brands fa-github" target="_blank"><span
+                            class="label">GitHub</span></a></li>
+            </ul>
+        </nav>
+
+        <!-- Main -->
+        <div id="main">
+
+            <!-- Post -->
+            <section class="post">
+                <header class="major">
+                    <h1>Web Map</h1>
+                    <div>Explore changes over time along the glacier by selecting a campaign year. View detailed point
+                        measurements and download data for in-depth analysis. Use the map layers and tools below to
+                        visualize different datasets and gain insights into glacial dynamics.</div>
+                    <br>
+                    <h3>Select a year:</h3>
+                    <!-- Add a dropdown menu to select the year -->
+                    <select id="yearSelect">
+                        <option value="All">All</option>
+                    </select>
+                    <!-- Add a button to trigger data fetching -->
+                    <button id="fetchDataButton">Fetch Data</button>
+                    <button onclick="downloadCSV()">Download CSV</button>
+                    <br>
+                    <div>Data projected in RDN2008 / UTM Zone 32N reference system (EPSG:7791), measurement unit: meter.</div>
+                </header>
+                <div id="map"></div>
+                <br>
+                <h3>WMS Services</h3>
+                <p>The data currently available in the WMS correspond, with a few exceptions, to the geodata that
+                    are also available on the Belvedere project <a href="https://zenodo.org/records/10817029" target="_blank">Zenodo repository</a>. Orthophotos and Digital Surface
+                    Models are subsampled to 50cm resolution to improve performances </p>
+                <h4>Resources</h4>
+                <div>RGB Orthophotos and DSMs resulting from the monitoring campaigns are available at the following URL
+                    that can be copied and pasted for establishing a WMS connection in your favorite GIS environment:
+                </div>
+                <a href="#" onclick="copyLink(event)"
+                    data-link="https://www.gis-geoserver.polimi.it/geoserver/labmgf/wms?version=1.1.0&layers=labmgf%3Abelvedere_2023_dsm_20cm&bbox=414777.6%2C5087919.8%2C416911.4%2C5091402.0&width=470&height=768&srs=EPSG%3A7791&styles=">Get
+                    the link</a>
+
+
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+            <section class="split contact">
+                <section class="alt">
+                    <h3>Contacts</h3>
+                    <p>Building 3A<br />
+                        Politecnico di Milano - Campus Leonardo<br />
+                        Leonardo Da Vinci Square 32, Milan, Italy<br />
+                        <a href="mailto:labmgf-dica@polimi.it">labmgf-dica@polimi.it</a>
+                    </p>
+                </section>
+                <section>
+                    <h3>Social</h3>
+                    <ul class="icons alt">
+                        <li><a href="https://x.com/LabMGF" class="icon brands alt fa-twitter" target="_blank"><span
+                                    class="label">Twitter</span></a></li>
+                        <li><a href="https://www.linkedin.com/company/labmgf-dica-polimi/"
+                                class="icon brands alt fa-linkedin" target="_blank"><span
+                                    class="label">LinkedIn</span></a>
+                        </li>
+                        <li><a href="https://www.instagram.com/labmgf?igsh=aW45b3EyNXFjNWs4"
+                                class="icon brands alt fa-instagram" target="_blank"><span
+                                    class="label">Instagram</span></a>
+                        </li>
+                        <li><a href="https://github.com/labmgf-polimi" class="icon brands alt fa-github"
+                                target="_blank"><span class="label">GitHub</span></a></li>
+                    </ul>
+                </section>
+            </section>
+        </footer>
+
+        <!-- Copyright -->
+        <div id="copyright">
+            <ul>
+                <li>&copy; Untitled</li>
+                <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/jquery.scrollex.min.js"></script>
+    <script src="../../assets/js/jquery.scrolly.min.js"></script>
+    <script src="../../assets/js/browser.min.js"></script>
+    <script src="../../assets/js/breakpoints.min.js"></script>
+    <script src="../../assets/js/util.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Proj4js library -->
+    <script src="https://cdn.jsdelivr.net/npm/proj4@2.11.0/dist/proj4.min.js"></script>
+    <!-- Our custom map script -->
+    <script src="map.js"></script>
+
+
+</body>
+
+</html>
